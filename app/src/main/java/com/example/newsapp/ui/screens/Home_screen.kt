@@ -1,5 +1,6 @@
 package com.example.newsapp.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,6 +9,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -18,6 +20,7 @@ import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.example.newsapp.domain.utils.Categories_news
 import com.example.newsapp.domain.utils.Navitation_config
+import com.example.newsapp.ui.components.common.Dropdown_menu_component
 import com.example.newsapp.ui.components.common.TopBarWithButton_component
 import com.example.newsapp.ui.components.homeScreen.CarruselCategories_component
 import com.example.newsapp.ui.components.homeScreen.Carrusel_component
@@ -42,7 +45,7 @@ class Home_screen: Screen{
 				.fillMaxSize()
 				.padding(it)){
 				LazyColumn(
-					modifier = Modifier.padding(vertical = 10.dp, horizontal = 10.dp)
+					modifier = Modifier.fillMaxSize().padding(vertical = 10.dp, horizontal = 10.dp)
 				){
 					
 					item {
@@ -50,12 +53,18 @@ class Home_screen: Screen{
 						Spacer(modifier = Modifier.padding(bottom = 20.dp))
 					}
 					
+//					item {
+//						Dropdown_menu_component(
+//							value = countNews.value,
+//							onChange = { vm.updateCount(it) }
+//						)
+//					}
+					
 					for(dataCategorie in Categories_news.values()){
 						item {
 							CarruselCategories_component(dataCategorie, vm, navigator, countNews.value)
 						}
 					}
-					
 				}
 			}
 		}

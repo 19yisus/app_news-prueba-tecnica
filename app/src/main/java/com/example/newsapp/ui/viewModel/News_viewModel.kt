@@ -53,6 +53,5 @@ class News_viewModel @Inject constructor(
 		}
 	}
 	
-	
-	
+	fun updateCount(value: Int) = _CountNews.update { value }
 }

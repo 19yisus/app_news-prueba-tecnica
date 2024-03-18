@@ -53,7 +53,7 @@ android {
 }
 
 dependencies {
-//	NAVIGATION
+	//	NAVIGATION
 	val voyagerVersion = "1.0.0"
 	implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
 	implementation("cafe.adriel.voyager:voyager-screenmodel:$voyagerVersion")

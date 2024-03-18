@@ -2,7 +2,9 @@ package com.example.newsapp.ui.components.common
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -20,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -40,7 +43,8 @@ fun NewsCard_component(modifierCard: Modifier, fontS: TextUnit, nav: Navigator, 
 	) {
 		Box(
 			modifier = Modifier
-				.fillMaxSize().clickable { nav.push(Details_new_screen(article = Article)) },
+				.fillMaxSize()
+				.clickable { nav.push(Details_new_screen(article = Article)) },
 			contentAlignment = Alignment.BottomCenter
 		) {
 			AsyncImage(
@@ -53,19 +57,24 @@ fun NewsCard_component(modifierCard: Modifier, fontS: TextUnit, nav: Navigator, 
 				onSuccess = { loading = true; Error = false; },
 				onError = { loading = true; Error = true;}
 			)
-			Text(
-				text = Article.title,
-				fontWeight = FontWeight.Bold,
-				color = Color.White,
-				fontSize = fontS,
-				textAlign = TextAlign.Center,
-				modifier = Modifier
-					.fillMaxWidth()
-					.background(MaterialTheme.colorScheme.primary.copy(alpha = 0.8F))
-					.padding(2.dp),
-				maxLines = 1,
-				overflow = TextOverflow.Ellipsis
-			)
+			Row(
+				horizontalArrangement = Arrangement.Center,
+				modifier = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.primary.copy(alpha = 0.8F))
+			) {
+				Text(
+					text = Article.title,
+					fontWeight = FontWeight.Bold,
+					color = Color.White,
+					fontSize = fontS,
+					textAlign = TextAlign.Center,
+					fontFamily = FontFamily.SansSerif,
+					modifier = Modifier
+						.fillMaxWidth(0.8F)
+						.padding(2.dp),
+					maxLines = 1,
+					overflow = TextOverflow.Ellipsis
+				)
+			}
 			//				if(loading && !Error) CircularProgressIndicator()
 			//				if(Error) Text(text = "Ocurrió un error al cargar la imagen")
 		}

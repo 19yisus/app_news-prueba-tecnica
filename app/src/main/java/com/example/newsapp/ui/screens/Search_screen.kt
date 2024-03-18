@@ -51,7 +51,6 @@ class Search_screen: Screen{
 		val listData = vm.ListStateTOpArticles.collectAsState()
 		this.screen(listData.value)
 	}
-	
 	@OptIn(ExperimentalMaterial3Api::class)
 	@Composable
 	private fun screen(listData: List<Article>){

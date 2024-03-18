@@ -76,7 +76,7 @@ fun Carrusel_component(articulos: List<Article?>, nav: Navigator){
 				)
 				Row(
 					horizontalArrangement = Arrangement.Center,
-					modifier = Modifier.fillMaxWidth().background(Color.Black.copy(alpha = 0.8F)).padding(4.dp)
+					modifier = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.primary.copy(alpha = 0.8F)).padding(4.dp)
 				){
 					Text(
 						text = articulos[pagerState.currentPage]?.title ?: "",
